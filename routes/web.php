@@ -30,3 +30,4 @@ Route::post('/alternatives', [AlternativeController::class, 'store'])->name('alt
 Route::delete('/alternatives/{alternative_id}', [AlternativeController::class, 'destroy'])->name('alternatives.destroy');
 
 Route::get('/rankings', [RankingController::class, 'index'])->name('rankings.index');
+Route::post('/rankings', [RankingController::class, 'doRanking'])->name('rankings.do');
