@@ -69,14 +69,12 @@ class RankingController extends Controller
         foreach($data['inputCriterias'] as $indexInput => $sub) {
             foreach($sub as $indexSub => $item) {
                 if ($item == 0) {
-                    $lmuArray[] = $tfnSkala[$data['inputCriterias'][$indexInput - $indexInput][$indexSub + 1] - 1]->reci;
+                    $lmuArray[] = $tfnSkala[$data['inputCriterias'][$indexSub][$indexInput] - 1]->reci;
                 } else {
                     $lmuArray[] = $tfnSkala[$item - 1]->tria;
                 }
             }
         }
-
-        // return array_chunk(array_merge(...$lmuArray), 12);
 
         $data['conversionCriterias'] = array_chunk(array_merge(...$lmuArray), 12);
 
