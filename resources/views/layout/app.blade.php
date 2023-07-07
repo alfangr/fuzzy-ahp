@@ -20,6 +20,8 @@
             font-family: 'Nunito', sans-serif;
           }
         </style>
+
+        @yield('extra-css')
     </head>
     <body class="antialiased">
       <div class="container mx-auto py-4">
@@ -32,5 +34,7 @@
           </div>
         </div>
       </div>
+
+      @yield('extra-js')
     </body>
 </html>

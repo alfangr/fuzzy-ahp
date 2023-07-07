@@ -12,9 +12,15 @@ class CriteriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['criterias'] = Criteria::all();
+        $queries = Criteria::query();
+
+        if ($request->has('filter')) {
+            $queries->limit($request->input('filter'));
+        }
+        
+        $data['criterias'] = $queries->get();
         return view('criterias', $data);
     }
 
