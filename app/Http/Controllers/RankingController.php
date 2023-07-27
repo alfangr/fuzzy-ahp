@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Criteria;
+use App\Models\SubCriteria;
 use App\Models\Alternative;
 
 class RankingController extends Controller
@@ -62,8 +63,22 @@ class RankingController extends Controller
         ];
         $inputCriteria = array_map('intval', $request->input);
 
+        // foreach() {
+
+        // }
+        
+        // $subInputCriteria = array_map('intval', $request->c11_input);
+        // $subInputCriteria = array_map('intval', $request->c11_input);
+        // $subInputCriteria = array_map('intval', $request->c11_input);
+        // $subInputCriteria = array_map('intval', $request->c11_input);
+
         $data['criterias'] = Criteria::all();
         $data['inputCriterias'] = array_chunk($inputCriteria, count($data['criterias']));
+
+        // return [
+        //     $data['inputCriterias'],
+        //     $data['subInputCriteria'],
+        // ];
 
         $lmuArray = [];
         foreach($data['inputCriterias'] as $indexInput => $sub) {

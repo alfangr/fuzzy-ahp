@@ -94,6 +94,71 @@
             </tbody>
           </table>
         </div>
+
+        @foreach($criterias as $criteria)
+        <div class="flex flex-col pt-3 first:pt-0">
+          <h3 class="mb-2">Perbandingan Sub Kriteria - {{ $criteria->criteria_name }}</h3>
+          <table class="shadow-lg bg-white border-collapse">
+            <thead>
+              <tr>
+                <th class="border border-gray-400 text-left px-8 py-4"></th>
+                @foreach($criteria->hasSubcriteria as $subcriteria)
+                <th class="bg-blue-100 border border-gray-400 text-center px-8 py-4">{{ $subcriteria->subcriteria_code }}</th>
+                @endforeach
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($criteria->hasSubcriteria as $column_key => $subcriteria)
+                <tr>
+                  <td class="bg-blue-100 border border-gray-400 text-center px-8 py-4 font-bold">{{ $subcriteria->subcriteria_code }}</td>
+                  @foreach($criteria->hasSubcriteria as $row_key => $subcriteria)
+                    @if($row_key < $column_key)
+                    <td class="bg-gray-100 border text-center px-8 py-4">
+                      <input class="w-5 h-auto text-center bg-gray-100" type="text" name="{{ $subcriteria->criteria_id }}_input[]" value="0" readonly />
+                    </td>
+                    @elseif($row_key > $column_key)
+                    <td class="border text-center px-8 py-4">
+                      <div class="relative">
+                        <select class="block appearance-none w-full text-center bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="{{ $subcriteria->criteria_id }}_input[]">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                        </select>
+                        <div class="absolute top-4 right-3">
+                          <svg
+                            class="w-3 h-3"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1200"
+                            height="1200"
+                            x="0"
+                            y="0"
+                            version="1.1"
+                            viewBox="0 0 1200 1200"
+                            xmlSpace="preserve"
+                          >
+                            <path d="M600.006 989.352l178.709-178.709L1200 389.357l-178.732-178.709L600.006 631.91 178.721 210.648 0 389.369l421.262 421.262 178.721 178.721h.023z"></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </td>
+                    @else
+                    <td class="bg-gray-100 border text-center px-8 py-4">
+                      <input class="w-5 h-auto text-center bg-gray-100" type="text" name="{{ $subcriteria->criteria_id }}_input[]" value="1" readonly />
+                    </td>
+                    @endif
+                  @endforeach
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+        @endforeach
       @endif
   
       <div class="flex flex-col pt-3 first:pt-0">
