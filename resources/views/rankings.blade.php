@@ -114,12 +114,12 @@
                   @foreach($criteria->hasSubcriteria as $row_key => $subcriteria)
                     @if($row_key < $column_key)
                     <td class="bg-gray-100 border text-center px-8 py-4">
-                      <input class="w-5 h-auto text-center bg-gray-100" type="text" name="{{ $subcriteria->criteria_id }}_input[]" value="0" readonly />
+                      <input class="w-5 h-auto text-center bg-gray-100" type="text" name="sub_input_{{ $subcriteria->criteria_id }}[]" value="0" readonly />
                     </td>
                     @elseif($row_key > $column_key)
                     <td class="border text-center px-8 py-4">
                       <div class="relative">
-                        <select class="block appearance-none w-full text-center bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="{{ $subcriteria->criteria_id }}_input[]">
+                        <select class="block appearance-none w-full text-center bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="sub_input_{{ $subcriteria->criteria_id }}[]">
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -149,7 +149,7 @@
                     </td>
                     @else
                     <td class="bg-gray-100 border text-center px-8 py-4">
-                      <input class="w-5 h-auto text-center bg-gray-100" type="text" name="{{ $subcriteria->criteria_id }}_input[]" value="1" readonly />
+                      <input class="w-5 h-auto text-center bg-gray-100" type="text" name="sub_input_{{ $subcriteria->criteria_id }}[]" value="1" readonly />
                     </td>
                     @endif
                   @endforeach

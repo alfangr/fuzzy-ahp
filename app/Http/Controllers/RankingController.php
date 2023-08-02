@@ -63,22 +63,8 @@ class RankingController extends Controller
         ];
         $inputCriteria = array_map('intval', $request->input);
 
-        // foreach() {
-
-        // }
-        
-        // $subInputCriteria = array_map('intval', $request->c11_input);
-        // $subInputCriteria = array_map('intval', $request->c11_input);
-        // $subInputCriteria = array_map('intval', $request->c11_input);
-        // $subInputCriteria = array_map('intval', $request->c11_input);
-
         $data['criterias'] = Criteria::all();
         $data['inputCriterias'] = array_chunk($inputCriteria, count($data['criterias']));
-
-        // return [
-        //     $data['inputCriterias'],
-        //     $data['subInputCriteria'],
-        // ];
 
         $lmuArray = [];
         foreach($data['inputCriterias'] as $indexInput => $sub) {
@@ -92,6 +78,89 @@ class RankingController extends Controller
         }
 
         $data['conversionCriterias'] = array_chunk(array_merge(...$lmuArray), 12);
+
+        // sub criteria function
+        $getSubByCriteria = SubCriteria::select('criteria_id')->distinct()->get();
+        $subCriteriaLength = $getSubByCriteria->count();
+        $subCriteriaCount = \DB::table('sub_criterias')
+            ->select('criteria_id', \DB::raw('COUNT(*) as count'))
+            ->groupBy('criteria_id')
+            ->pluck('count')
+            ->toArray();
+
+        $inputSubCriteria = [];
+        for ($i = 1; $i <= $subCriteriaLength; $i++) {
+            $parseNumber = array_map('intval', $request->input("sub_input_" . $i));
+            $inputSubCriteria[] = array_chunk($parseNumber, $subCriteriaCount[$i - 1]);
+        }
+
+        // sub criteria 1
+        $data['inputSubCriteria1'] = $inputSubCriteria[0];
+        $lmuSubCriteria1 = [];
+
+        foreach($data['inputSubCriteria1'] as $indexInput => $sub) {
+            foreach($sub as $indexSub => $item) {
+                if ($item == 0) {
+                    $lmuSubCriteria1[] = $tfnSkala[$data['inputSubCriteria1'][$indexSub][$indexInput] - 1]->reci;
+                } else {
+                    $lmuSubCriteria1[] = $tfnSkala[$item - 1]->tria;
+                }
+            }
+        }
+
+        // sub criteria 2
+        $data['inputSubCriteria2'] = $inputSubCriteria[1];
+        $lmuSubCriteria2 = [];
+
+        foreach($data['inputSubCriteria2'] as $indexInput => $sub) {
+            foreach($sub as $indexSub => $item) {
+                if ($item == 0) {
+                    $lmuSubCriteria2[] = $tfnSkala[$data['inputSubCriteria2'][$indexSub][$indexInput] - 1]->reci;
+                } else {
+                    $lmuSubCriteria2[] = $tfnSkala[$item - 1]->tria;
+                }
+            }
+        }
+
+        // sub criteria 3
+        $data['inputSubCriteria3'] = $inputSubCriteria[2];
+        $lmuSubCriteria3 = [];
+
+        foreach($data['inputSubCriteria3'] as $indexInput => $sub) {
+            foreach($sub as $indexSub => $item) {
+                if ($item == 0) {
+                    $lmuSubCriteria3[] = $tfnSkala[$data['inputSubCriteria3'][$indexSub][$indexInput] - 1]->reci;
+                } else {
+                    $lmuSubCriteria3[] = $tfnSkala[$item - 1]->tria;
+                }
+            }
+        }
+
+        // sub criteria 4
+        $data['inputSubCriteria4'] = $inputSubCriteria[3];
+        $lmuSubCriteria4 = [];
+
+        foreach($data['inputSubCriteria4'] as $indexInput => $sub) {
+            foreach($sub as $indexSub => $item) {
+                if ($item == 0) {
+                    $lmuSubCriteria4[] = $tfnSkala[$data['inputSubCriteria4'][$indexSub][$indexInput] - 1]->reci;
+                } else {
+                    $lmuSubCriteria4[] = $tfnSkala[$item - 1]->tria;
+                }
+            }
+        }
+
+        // $data['conversionSubCriterias'] = [
+        //     array_chunk(array_merge(...$lmuSubCriteria1), pow($subCriteriaCount[0], 2)),
+        //     array_chunk(array_merge(...$lmuSubCriteria2), pow($subCriteriaCount[1], 2)),
+        //     array_chunk(array_merge(...$lmuSubCriteria3), pow($subCriteriaCount[2], 2)),
+        //     array_chunk(array_merge(...$lmuSubCriteria4), pow($subCriteriaCount[3], 2))
+        // ];
+
+        $data['conversionSubCriteria1'] = array_chunk(array_merge(...$lmuSubCriteria1), 9);
+        $data['conversionSubCriteria2'] = array_chunk(array_merge(...$lmuSubCriteria2), 6);
+        $data['conversionSubCriteria3'] = array_chunk(array_merge(...$lmuSubCriteria3), 9);
+        $data['conversionSubCriteria4'] = array_chunk(array_merge(...$lmuSubCriteria4), 6);
 
         return view('result', $data);
     }

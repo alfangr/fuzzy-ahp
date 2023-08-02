@@ -89,6 +89,134 @@
             </table>
         </div>
 
+        <div class="flex flex-col pt-3 first:pt-0">
+            <h3 class="mb-2">Konversi Nilai Perbandingan Sub Kriteria 1</h3>
+            <table class="shadow-lg bg-white border-collapse">
+                <thead>
+                    <tr>
+                        <th rowspan="2" class="border border-gray-400 text-left px-8 py-4"></th>
+                        @foreach($inputSubCriteria1 as $key => $result)
+                        <th colspan="3" class="bg-blue-100 border border-gray-400 text-center px-8 py-4">{{ 'C' . ++$key }}</th>
+                        @endforeach
+                    </tr>
+                    <tr>
+                        @foreach($inputSubCriteria1 as $key => $result)
+                        <th class="bg-blue-100 border border-gray-400 text-center px-8 py-2">L</th>
+                        <th class="bg-blue-100 border border-gray-400 text-center px-8 py-2">M</th>
+                        <th class="bg-blue-100 border border-gray-400 text-center px-8 py-2">U</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @php $no = 1; @endphp
+                    @foreach($conversionSubCriteria1 as $conversionSubCriteria1)
+                    <tr>
+                        <td class="bg-blue-100 border border-gray-400 text-center px-8 py-4 font-bold">{{ 'C' . $no++ }}</td>
+                        @foreach($conversionSubCriteria1 as $cell)
+                        <td class="bg-gray-100 border text-center px-8 py-4">{{ $cell }}</td>
+                        @endforeach
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex flex-col pt-3 first:pt-0">
+            <h3 class="mb-2">Konversi Nilai Perbandingan Sub Kriteria 2</h3>
+            <table class="shadow-lg bg-white border-collapse">
+                <thead>
+                    <tr>
+                        <th rowspan="2" class="border border-gray-400 text-left px-8 py-4"></th>
+                        @foreach($inputSubCriteria2 as $key => $result)
+                        <th colspan="3" class="bg-blue-100 border border-gray-400 text-center px-8 py-4">{{ 'C' . ++$key }}</th>
+                        @endforeach
+                    </tr>
+                    <tr>
+                        @foreach($inputSubCriteria2 as $key => $result)
+                        <th class="bg-blue-100 border border-gray-400 text-center px-8 py-2">L</th>
+                        <th class="bg-blue-100 border border-gray-400 text-center px-8 py-2">M</th>
+                        <th class="bg-blue-100 border border-gray-400 text-center px-8 py-2">U</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @php $no = 1; @endphp
+                    @foreach($conversionSubCriteria2 as $conversionSubCriteria2)
+                    <tr>
+                        <td class="bg-blue-100 border border-gray-400 text-center px-8 py-4 font-bold">{{ 'C' . $no++ }}</td>
+                        @foreach($conversionSubCriteria2 as $cell)
+                        <td class="bg-gray-100 border text-center px-8 py-4">{{ $cell }}</td>
+                        @endforeach
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex flex-col pt-3 first:pt-0">
+            <h3 class="mb-2">Konversi Nilai Perbandingan Sub Kriteria 3</h3>
+            <table class="shadow-lg bg-white border-collapse">
+                <thead>
+                    <tr>
+                        <th rowspan="2" class="border border-gray-400 text-left px-8 py-4"></th>
+                        @foreach($inputSubCriteria3 as $key => $result)
+                        <th colspan="3" class="bg-blue-100 border border-gray-400 text-center px-8 py-4">{{ 'C' . ++$key }}</th>
+                        @endforeach
+                    </tr>
+                    <tr>
+                        @foreach($inputSubCriteria3 as $key => $result)
+                        <th class="bg-blue-100 border border-gray-400 text-center px-8 py-2">L</th>
+                        <th class="bg-blue-100 border border-gray-400 text-center px-8 py-2">M</th>
+                        <th class="bg-blue-100 border border-gray-400 text-center px-8 py-2">U</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @php $no = 1; @endphp
+                    @foreach($conversionSubCriteria3 as $conversionSubCriteria3)
+                    <tr>
+                        <td class="bg-blue-100 border border-gray-400 text-center px-8 py-4 font-bold">{{ 'C' . $no++ }}</td>
+                        @foreach($conversionSubCriteria3 as $cell)
+                        <td class="bg-gray-100 border text-center px-8 py-4">{{ $cell }}</td>
+                        @endforeach
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex flex-col pt-3 first:pt-0">
+            <h3 class="mb-2">Konversi Nilai Perbandingan Sub Kriteria 4</h3>
+            <table class="shadow-lg bg-white border-collapse">
+                <thead>
+                    <tr>
+                        <th rowspan="2" class="border border-gray-400 text-left px-8 py-4"></th>
+                        @foreach($inputSubCriteria4 as $key => $result)
+                        <th colspan="3" class="bg-blue-100 border border-gray-400 text-center px-8 py-4">{{ 'C' . ++$key }}</th>
+                        @endforeach
+                    </tr>
+                    <tr>
+                        @foreach($inputSubCriteria4 as $key => $result)
+                        <th class="bg-blue-100 border border-gray-400 text-center px-8 py-2">L</th>
+                        <th class="bg-blue-100 border border-gray-400 text-center px-8 py-2">M</th>
+                        <th class="bg-blue-100 border border-gray-400 text-center px-8 py-2">U</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @php $no = 1; @endphp
+                    @foreach($conversionSubCriteria4 as $conversionSubCriteria4)
+                    <tr>
+                        <td class="bg-blue-100 border border-gray-400 text-center px-8 py-4 font-bold">{{ 'C' . $no++ }}</td>
+                        @foreach($conversionSubCriteria4 as $cell)
+                        <td class="bg-gray-100 border text-center px-8 py-4">{{ $cell }}</td>
+                        @endforeach
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </form>
 </main>
